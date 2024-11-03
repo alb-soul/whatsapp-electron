@@ -1,6 +1,10 @@
+# Preview
+![waelec_bordered](https://github.com/user-attachments/assets/a52d64be-0856-44dd-b6ae-b22a9b72ee44)
+
+
 # Installation Steps
 
-1. Jalankan perintah berikut di terminal untuk menginstal dependensi:
+1. Instal dependensi:
    ```bash
    npm install
 2. Build proyek:
