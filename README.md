@@ -12,3 +12,5 @@
    npm run build
 
 Atau download AppImage di [Release](https://github.com/alb-soul/whatsapp-electron/releases)
+
+--- WhatsApp Web for Linux Desktop build with Electron uses generic user agent ---
