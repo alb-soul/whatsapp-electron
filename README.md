@@ -6,10 +6,16 @@
 
 # Installation Steps
 
+1. Cloning repository:
+   ```bash
+   git clone https://github.com/alb-soul/whatsapp-electron.git
 1. Instal dependensi:
    ```bash
    npm install
-2. Build proyek:
+3. Coba dulu
+   ```bash
+   npm run start
+4. Atau build proyek:
    ```bash
    npm run build
 
