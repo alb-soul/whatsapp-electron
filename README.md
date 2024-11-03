@@ -1,5 +1,5 @@
 # Preview
-<img src="https://github.com/user-attachments/assets/a52d64be-0856-44dd-b6ae-b22a9b72ee44" alt="waelec_bordered" width="500" />
+<img src="https://github.com/user-attachments/assets/a52d64be-0856-44dd-b6ae-b22a9b72ee44" alt="waelec_bordered" width="700" />
 
 ![icon](https://github.com/user-attachments/assets/5408334b-e694-4f58-925d-8bfef1b586e0)
 
