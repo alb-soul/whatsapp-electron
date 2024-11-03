@@ -1,7 +1,6 @@
 # Preview
-![icon](https://github.com/user-attachments/assets/fd58c284-000e-4eda-94b9-28e61da484ea)
-
 ![waelec_bordered](https://github.com/user-attachments/assets/a52d64be-0856-44dd-b6ae-b22a9b72ee44)
+![icon](https://github.com/user-attachments/assets/5408334b-e694-4f58-925d-8bfef1b586e0)
 
 
 # Installation Steps
