@@ -23,7 +23,7 @@ And run from terminal:
 ```bash
 /opt/WhatsApp-Electron/whatsapp-electron.AppImage
 ```
-Or install it from source :
+## Or install it from source :
 
 1. Cloning repository:
    ```bash
