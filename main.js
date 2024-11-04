@@ -15,13 +15,19 @@ if (!gotTheLock) {
     app.on('second-instance', (event, commandLine, workingDirectory) => {
         // Jika aplikasi sudah terbuka, fokuskan jendela yang sudah ada
         if (win) {
-            if (win.isMinimized()) win.restore();
-            win.focus();
+            if (win.isMinimized()) win.restore(); // Kembalikan jendela jika diminimalkan
+            win.show(); // Tampilkan jendela
+            win.focus(); // Fokuskan jendela
         }
     });
 
     async function createWindow() {
-        const isDev = (await import('electron-is-dev')).default;
+        // Jika jendela sudah ada, langsung fokuskan dan keluar
+        if (win) {
+            win.show();
+            win.focus();
+            return; // Keluar dari fungsi jika jendela sudah ada
+        }
 
         win = new BrowserWindow({
             width: 800,
@@ -48,7 +54,7 @@ if (!gotTheLock) {
         win.on('close', (event) => {
             if (!app.isQuiting) {
                 event.preventDefault();
-                win.hide();
+                win.hide(); // Sembunyikan jendela alih-alih menutupnya
             }
         });
     }
@@ -80,7 +86,7 @@ if (!gotTheLock) {
 
         // Show the window when the tray icon is clicked
         tray.on('click', () => {
-            win.isVisible() ? win.hide() : win.show();
+            win.isVisible() ? win.hide() : win.show(); // Toggle between hide/show
         });
     }
 
