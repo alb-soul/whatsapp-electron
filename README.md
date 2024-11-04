@@ -6,6 +6,25 @@
 
 # Installation Steps
 
+Download AppImage from [Release](https://github.com/alb-soul/whatsapp-electron/releases) page.
+Put the AppImage to /opt/ directory then give executable access.
+```bash
+sudo mkdir /opt/WhatsApp-Electron
+```
+Copy downloaded AppImage file to /opt/WhatsApp-Electron directory
+```bash
+sudo cp WhatsApp.Electron-<your-version>.AppImage /opt/WhatsApp-Electron/whatsapp-electron.AppImage
+```
+*replace <your-version> with the appropriate value. E.x : WhatsApp.Electron-1.0.0.AppImage (ganti kata <your-version> ke yang sesuai didownload)
+```bash
+sudo chmod +x /opt/WhatsApp-Electron/whatsapp-electron.AppImage
+```
+And run from terminal:
+```bash
+/opt/WhatsApp-Electron/whatsapp-electron.AppImage
+```
+Or install it from source :
+
 1. Cloning repository:
    ```bash
    git clone https://github.com/alb-soul/whatsapp-electron.git
@@ -23,11 +42,12 @@
    ```bash
    cd dist
    sudo mkdir /opt/WhatsApp-Electron
-   sudo cp "WhatsApp Electron-1.0.0.AppImage" /opt/WhatsApp-Electron/whatsapp-electron.AppImage
+   sudo cp "WhatsApp Electron-<your-version>.AppImage" /opt/WhatsApp-Electron/whatsapp-electron.AppImage
 6. Menjalankan aplikasi dari terminal:
    ```bash
    /opt/WhatsApp-Electron/whatsapp-electron.AppImage
-8. Buat tersedia di menu:
+   ```
+## Buat tersedia di menu:
    ```bash
    nano ~/.local/share/applications/whatsapp-electron.desktop
    ```
@@ -41,14 +61,12 @@
    Categories=Chat;Communication;
    StartupNotify=true
    ```
-   Simpan (Ctrl+x, lalu y, tekan Enter)
+   Simpan/save (Ctrl+x, lalu y, tekan Enter)
 9. Update desktop icon:
     ```bash
     update-desktop-database ~/.local/share/applications
     ```
 
-   
 
-Atau download AppImage melalui laman [Release](https://github.com/alb-soul/whatsapp-electron/releases)
 
 --- WhatsApp Web for Linux Desktop build with Electron uses generic user agent ---
