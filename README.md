@@ -15,7 +15,7 @@ Copy downloaded AppImage file to /opt/WhatsApp-Electron directory
 ```bash
 sudo cp WhatsApp.Electron-<your-version>.AppImage /opt/WhatsApp-Electron/whatsapp-electron.AppImage
 ```
-*replace <your-version> with the appropriate value. E.x : WhatsApp.Electron-1.0.0.AppImage (ganti kata <your-version> ke yang sesuai didownload)
+*replace ```<your-version>``` with the appropriate value. E.x : WhatsApp.Electron-1.0.0.AppImage (ganti kata ```<your-version>``` ke yang sesuai didownload)
 ```bash
 sudo chmod +x /opt/WhatsApp-Electron/whatsapp-electron.AppImage
 ```
@@ -63,7 +63,7 @@ And run from terminal:
    ```
    Simpan/save (Ctrl+x, lalu y, tekan Enter)
 9. Update desktop icon:
-    ```bash
+    ```
     update-desktop-database ~/.local/share/applications
     ```
 
