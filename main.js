@@ -1,10 +1,10 @@
-const { app, BrowserWindow, Tray, Menu, Notification, ipcMain } = require('electron');
+const { app, BrowserWindow, Tray, Menu, Notification, ipcMain, shell, clipboard } = require('electron');
 const path = require('path');
 
 let win;
 let tray;
 
-app.isQuiting = false; // Menambahkan properti ini di awal aplikasi
+app.isQuiting = false;
 
 // Minta kunci untuk memastikan hanya satu instance yang bisa berjalan
 const gotTheLock = app.requestSingleInstanceLock();
@@ -13,55 +13,135 @@ if (!gotTheLock) {
     app.quit();
 } else {
     app.on('second-instance', (event, commandLine, workingDirectory) => {
-        // Jika aplikasi sudah terbuka, fokuskan jendela yang sudah ada
         if (win) {
-            if (win.isMinimized()) win.restore(); // Kembalikan jendela jika diminimalkan
-            win.show(); // Tampilkan jendela
-            win.focus(); // Fokuskan jendela
+            if (win.isMinimized()) win.restore();
+            win.show();
+            win.focus();
         }
     });
 
     async function createWindow() {
-        // Jika jendela sudah ada, langsung fokuskan dan keluar
         if (win) {
             win.show();
             win.focus();
-            return; // Keluar dari fungsi jika jendela sudah ada
+            return;
         }
 
         win = new BrowserWindow({
             width: 800,
             height: 600,
-            icon: path.join(__dirname, 'icon.png'), // Set the window icon
-            autoHideMenuBar: true, // Hide the menu bar by default
+            icon: path.join(__dirname, 'icon.png'),
+            autoHideMenuBar: true,
             webPreferences: {
                 contextIsolation: true,
                 enableRemoteModule: false,
-                preload: path.join(__dirname, 'preload.js') // Use a preload script for IPC
+                preload: path.join(__dirname, 'preload.js')
             }
         });
 
-        // Set the user agent to avoid Chrome update prompts
         win.webContents.setUserAgent('Mozilla/5.0 (compatible; Googlebot/2.1; +http://www.google.com/bot.html)');
-
-        // Load WhatsApp Web URL
         win.loadURL('https://web.whatsapp.com');
 
-        // Create the tray icon
         createTray();
 
-        // Handle window close events
         win.on('close', (event) => {
             if (!app.isQuiting) {
                 event.preventDefault();
-                win.hide(); // Sembunyikan jendela alih-alih menutupnya
+                win.hide();
+            }
+        });
+
+        // Handle external links opening
+        win.webContents.setWindowOpenHandler(({ url }) => {
+            handleExternalLinks(url);
+            return { action: 'deny' };
+        });
+
+        win.webContents.on('will-navigate', (event, url) => {
+            if (!url.startsWith('https://web.whatsapp.com')) {
+                event.preventDefault();
+                handleExternalLinks(url);
+            }
+        });
+
+        // Add context menu for right-click
+        win.webContents.on('context-menu', (event, params) => {
+            let menuItems = [];
+        
+            // Menambahkan opsi "Copy Text" hanya jika ada teks yang dipilih, link, email, atau nomor telepon
+            if (params.selectionText || params.linkURL || isEmail(params.selectionText)) {
+                menuItems.push({
+                    label: 'Copy Text',
+                    visible: true,
+                    click: () => {
+                        const textToCopy = params.selectionText || params.linkURL || params.selectionText; // Prioritize selected text > link > email > phone
+                        if (textToCopy) clipboard.writeText(textToCopy);
+                    }
+                });
+            }
+        
+            // Menambahkan separator jika ada item menu
+            if (menuItems.length > 0) {
+                menuItems.push({ type: 'separator' });
+            }
+        
+            // Menambahkan opsi "Open in Browser" jika URL ditemukan
+            if (isURL(params.linkURL)) {
+                menuItems.push({
+                    label: 'Open in Browser',
+                    visible: true,
+                    click: () => {
+                        shell.openExternal(params.linkURL);
+                    }
+                });
+            }
+        
+            // Menambahkan opsi "Open in Email Client" jika link adalah mailto
+            if (isMailto(params.linkURL)) {
+                menuItems.push({
+                    label: 'Open in Email Client',
+                    visible: true,
+                    click: () => {
+                        shell.openExternal(params.linkURL);
+                    }
+                });
+            }
+        
+            // Membangun dan menampilkan menu hanya jika ada item menu
+            if (menuItems.length > 0) {
+                const menu = Menu.buildFromTemplate(menuItems);
+                menu.popup();
             }
         });
     }
 
+    // Function to handle external links
+    function handleExternalLinks(url) {
+        if (url.startsWith('mailto:')) {
+            shell.openExternal(url);
+        } else {
+            shell.openExternal(url);
+        }
+    }
+
+    // Check if the link is a URL
+    function isURL(link) {
+        return /^https?:\/\//.test(link);
+    }
+
+    // Check if the link is a mailto link
+    function isMailto(link) {
+        return /^mailto:/.test(link);
+    }
+
+    // Check if text looks like an email
+    function isEmail(text) {
+        return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(text);
+    }
+
     // Function to create the tray icon
     function createTray() {
-        const iconPath = path.join(__dirname, 'icon.png'); // Use your tray icon path
+        const iconPath = path.join(__dirname, 'icon.png');
         tray = new Tray(iconPath);
 
         const contextMenu = Menu.buildFromTemplate([
@@ -75,7 +155,7 @@ if (!gotTheLock) {
             {
                 label: 'Quit',
                 click: () => {
-                    app.isQuiting = true; // Set app.isQuiting to true
+                    app.isQuiting = true;
                     app.quit();
                 }
             }
@@ -84,9 +164,8 @@ if (!gotTheLock) {
         tray.setToolTip('WhatsApp');
         tray.setContextMenu(contextMenu);
 
-        // Show the window when the tray icon is clicked
         tray.on('click', () => {
-            win.isVisible() ? win.hide() : win.show(); // Toggle between hide/show
+            win.isVisible() ? win.hide() : win.show();
         });
     }
 
@@ -95,13 +174,12 @@ if (!gotTheLock) {
         const notification = new Notification({
             title: title,
             body: body,
-            icon: path.join(__dirname, 'icon.png') // Use your icon path
+            icon: path.join(__dirname, 'icon.png')
         });
 
         notification.onclick = () => {
-            console.log("Notification clicked!"); // Log when the notification is clicked
-            win.show(); // Show the window
-            win.focus(); // Bring the window to the front
+            win.show();
+            win.focus();
         };
 
         notification.show();
