@@ -5,7 +5,7 @@ contextBridge.exposeInMainWorld('electron', {
     sendMessage: (message) => ipcRenderer.send('new-message', message)
 });
 
-// Fungsi untuk menghapus class 'app-wrapper-web'
+//  menghapus class 'app-wrapper-web'
 function removeAppWrapperClass() {
     const appWrapper = document.querySelector('.app-wrapper-web');
     if (appWrapper) {
