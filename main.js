@@ -6,7 +6,7 @@ let tray;
 
 app.isQuiting = false;
 
-// Minta kunci untuk memastikan hanya satu instance yang bisa berjalan
+// Memastikan hanya satu instance yang bisa berjalan
 const gotTheLock = app.requestSingleInstanceLock();
 
 if (!gotTheLock) {
