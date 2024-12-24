@@ -13,9 +13,9 @@ sudo mkdir /opt/WhatsApp-Electron
 ```
 Copy downloaded AppImage file to /opt/WhatsApp-Electron directory
 ```bash
-sudo cp "WhatsApp Electron-<your-version>.AppImage" /opt/WhatsApp-Electron/whatsapp-electron.AppImage
+sudo cp "WhatsApp Electron-2.0.0.AppImage" /opt/WhatsApp-Electron/whatsapp-electron.AppImage
 ```
-*replace ```<your-version>``` with the appropriate value. E.x : WhatsApp Electron-2.0.0.AppImage (ganti kata ```<your-version>``` ke yang sesuai didownload)
+Give excetutable permission
 ```bash
 sudo chmod +x /opt/WhatsApp-Electron/whatsapp-electron.AppImage
 ```
@@ -23,6 +23,8 @@ And run from terminal:
 ```bash
 /opt/WhatsApp-Electron/whatsapp-electron.AppImage
 ```
+Then create desktop file of app for accessable on menu. See [buat tersedia di menu](#Buat tersedia di menu:)
+
 ## Or install it from source :
 
 1. Cloning repository:
@@ -42,7 +44,7 @@ And run from terminal:
    ```bash
    cd dist
    sudo mkdir /opt/WhatsApp-Electron
-   sudo cp "WhatsApp Electron-<your-version>.AppImage" /opt/WhatsApp-Electron/whatsapp-electron.AppImage
+   sudo cp "WhatsApp Electron-2.0.0.AppImage" /opt/WhatsApp-Electron/whatsapp-electron.AppImage
 6. Menjalankan aplikasi dari terminal:
    ```bash
    /opt/WhatsApp-Electron/whatsapp-electron.AppImage
