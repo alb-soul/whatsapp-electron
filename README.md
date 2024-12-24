@@ -23,7 +23,7 @@ And run from terminal:
 ```bash
 /opt/WhatsApp-Electron/whatsapp-electron.AppImage
 ```
-Then create desktop file of app for accessable on menu. See [buat tersedia di menu](#Buat-tersedia-di-menu:)
+Then create desktop file of app for accessable on menu. See [buat tersedia di menu](#buat-tersedia-di-menu:)
 
 ## Or install it from source :
 
