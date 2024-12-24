@@ -7,6 +7,7 @@
 # Installation Steps
 
 Download AppImage from [Release](https://github.com/alb-soul/whatsapp-electron/releases) page.
+
 Create app directory
 ```bash
 sudo mkdir /opt/WhatsApp-Electron
