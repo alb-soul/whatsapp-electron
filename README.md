@@ -65,10 +65,11 @@ Create desktop file of app for accessable on menu. See [buat tersedia di menu](#
    StartupNotify=true
    ```
    Simpan/save (Ctrl+x, lalu y, tekan Enter)
-9. Update desktop icon:
-    ```bash
-    update-desktop-database ~/.local/share/applications
-    ```
+   
+   Update desktop icon:
+   ```bash
+   update-desktop-database ~/.local/share/applications
+   ```
 
 
 
