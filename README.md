@@ -6,25 +6,25 @@
 
 # Installation Steps
 
-Download AppImage from [Release](https://github.com/alb-soul/whatsapp-electron/releases) page.
+1. Download AppImage from [Release](https://github.com/alb-soul/whatsapp-electron/releases) page.
 
-Create app directory
+2. Create app directory
 ```bash
 sudo mkdir /opt/WhatsApp-Electron
 ```
-Copy downloaded AppImage file to /opt/WhatsApp-Electron directory
+3. Copy downloaded AppImage file to /opt/WhatsApp-Electron directory
 ```bash
-sudo cp "WhatsApp.Electron-2.0.0.AppImage" /opt/WhatsApp-Electron/whatsapp-electron.AppImage
+sudo cp "WhatsApp.Electron-2.0.1.AppImage" /opt/WhatsApp-Electron/whatsapp-electron.AppImage
 ```
-Give excetutable permission
+4. Give excetutable permission
 ```bash
 sudo chmod +x /opt/WhatsApp-Electron/whatsapp-electron.AppImage
 ```
-And run from terminal:
+5. And run from terminal to open the app:
 ```bash
 /opt/WhatsApp-Electron/whatsapp-electron.AppImage
 ```
-Then create desktop file of app for accessable on menu. See [buat tersedia di menu](#buat-tersedia-di-menu)
+Create desktop file of app for accessable on menu. See [buat tersedia di menu](#buat-tersedia-di-menu)
 
 ## Or install it from source :
 
