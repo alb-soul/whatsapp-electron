@@ -1,6 +1,6 @@
 {
   "name": "whatsapp-electron",
-  "version": "2.0.0",
+  "version": "2.0.1",
   "description": "A simple WhatsApp Web client built with Electron.",
   "author": "alb-souk <xeamam.hsu@gmail.com>",
   "homepage": "https://alb-soul.github.io",
