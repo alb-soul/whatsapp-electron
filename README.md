@@ -66,7 +66,7 @@ Create desktop file of app for accessable on menu. See [buat tersedia di menu](#
    ```
    Simpan/save (Ctrl+x, lalu y, tekan Enter)
 9. Update desktop icon:
-    ```
+    ```bash
     update-desktop-database ~/.local/share/applications
     ```
 
