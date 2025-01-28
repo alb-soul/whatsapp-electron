@@ -45,7 +45,7 @@ Create desktop file of app for accessable on menu. See [buat tersedia di menu](#
    ```bash
    cd dist
    sudo mkdir /opt/WhatsApp-Electron
-   sudo cp "WhatsApp Electron-2.0.0.AppImage" /opt/WhatsApp-Electron/whatsapp-electron.AppImage
+   sudo cp "WhatsApp Electron-2.0.1.AppImage" /opt/WhatsApp-Electron/whatsapp-electron.AppImage
 6. Menjalankan aplikasi dari terminal:
    ```bash
    /opt/WhatsApp-Electron/whatsapp-electron.AppImage
