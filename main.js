@@ -141,7 +141,7 @@ if (!gotTheLock) {
 
     // Function to create the tray icon
     function createTray() {
-        const iconPath = path.join(__dirname, 'icon.png');
+        const iconPath = path.join(__dirname, 'icon-panel.png');
         tray = new Tray(iconPath);
 
         const contextMenu = Menu.buildFromTemplate([
